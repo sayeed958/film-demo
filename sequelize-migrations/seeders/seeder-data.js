@@ -67,6 +67,20 @@ module.exports = {
             comment: 'awesome movie',
             createdAt: new Date(),
             updatedAt: new Date()
+        }, {
+            uuid: uuidv4(),
+            userId: 1,
+            filmId: 2,
+            comment: 'awesome movie',
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+            uuid: uuidv4(),
+            userId: 1,
+            filmId: 2,
+            comment: 'awesome movie',
+            createdAt: new Date(),
+            updatedAt: new Date()
         },
     ]
 

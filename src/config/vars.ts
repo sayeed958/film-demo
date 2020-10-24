@@ -21,9 +21,6 @@ export default {
         username: process.env.PGSQL_USER,
         password: process.env.PGSQL_PASS
     },
-    RedisHost: process.env.REDIS_HOST,
-    RedisPassword: process.env.REDIS_PASSWORD,
-    RedisPort: process.env.REDIS_PORT,
     jwtSecret: process.env.JWT_SECRET,
     jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
 };

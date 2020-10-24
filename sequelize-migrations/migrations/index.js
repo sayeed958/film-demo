@@ -1,35 +1,10 @@
 'use strict';
 
 module.exports = {
-  up: function (queryInterface, Sequelize) {
-  /*
-          Add altering commands here.
-          Return a promise to correctly handle asynchronicity.
+    up: function (queryInterface, Sequelize) {
 
-          Example:
-          return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-        */
-  // queryInterface.addColumn(
-  //     'OAuthUsers',
-  //     'test',
-  //     {
-  //         type: Sequelize.FLOAT,
-  //         defaultValue: 0
-  //     }
-  // );
-  },
+    },
 
-  down: function (queryInterface, Sequelize) {
-  /*
-          Add reverting commands here.
-          Return a promise to correctly handle asynchronicity.
-
-          Example:
-          return queryInterface.dropTable('users');
-        */
-  // queryInterface.removeColumn(
-  //     'OAuthUsers',
-  //     'test'
-  // );
-  }
+    down: function (queryInterface, Sequelize) {
+    }
 };
