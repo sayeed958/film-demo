@@ -1,11 +1,15 @@
 import * as express from 'express';
+
 import validate from 'express-validation';
+
 import filmController from '../../../controllers/sql/film.controller';
 import authValidation from '../../../validations/validation'
 import authVerify from '../../../middlewares/authVerify'
 
 const router = express.Router();
 const {createFilm, createComment} = authValidation;
+import upload from '../../../middlewares/fileUpload';
+
 /**
  * @api {post} /api/v1/film/create Create Film
  * @apiDescription Create Film
@@ -61,7 +65,7 @@ const {createFilm, createComment} = authValidation;
 }
  */
 
-router.route('/create').post(validate(createFilm), filmController.createFilm);
+router.route('/create').post(upload.single('photo'), validate(createFilm), filmController.createFilm);
 
 /**
  * @api {get} /api/v1/film/list List Film

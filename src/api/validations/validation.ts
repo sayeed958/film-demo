@@ -23,7 +23,7 @@ export default {
             rating: Joi.number().min(1).max(5).required(),
             ticketPrice: Joi.number().required(),
             country: Joi.string().required(),
-            photo: Joi.string().required(),
+            //photo: Joi.string().required(),
             genre: Joi.array().required(),
         })
     },

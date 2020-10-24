@@ -13,7 +13,9 @@ const {miscMessage, version} = constants;
 export default class FilmController {
     static async createFilm(req: express.Request, res: express.Response) {
         try {
+
             const reqBody = {...req.body};
+            reqBody.photo = req.file.filename;
             const result = await FilmService.createFilm(reqBody);
             if (result && result['error']) {
                 return customResponse.setResponse(
@@ -124,7 +126,7 @@ export default class FilmController {
     static async createComment(req: express.Request, res: express.Response) {
         try {
             const reqBody = {
-                userId: req.user.id,
+                userId: req['user']['id'],
                 comment: req.body.comment,
                 filmId: req.body.filmId
             };
