@@ -23,4 +23,8 @@ Required Tech stack
 
 `yarn docs` // to get the api Doc
 
+`yarn test` // to run the test cases (server should be up)
+
+
+
 
