@@ -38,9 +38,9 @@ module.exports = (sequelize, DataTypes) => {
     Film.associate = (models) => {
         Film.hasMany(models.Comment, {
             as: 'Comments',
+            constraints: false,
             foreignKey: 'filmId',
         });
-
     };
     return Film;
 };

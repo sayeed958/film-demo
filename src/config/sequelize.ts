@@ -75,6 +75,11 @@ fs.readdirSync(path.join(__dirname, '../api/database/sql/models/'))
 	});
 
 
+Object.keys(db).forEach((modelName) => {
+    if ('associate' in db[modelName]) {
+        db[modelName].associate(db);
+    }
+});
 
 sequelize
 	.sync({ force: false })

@@ -124,7 +124,7 @@ export default class FilmController {
     static async createComment(req: express.Request, res: express.Response) {
         try {
             const reqBody = {
-                userId: 1,
+                userId: req.user.id,
                 comment: req.body.comment,
                 filmId: req.body.filmId
             };

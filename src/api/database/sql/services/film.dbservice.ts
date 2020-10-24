@@ -18,21 +18,45 @@ class FilmDbservice extends Base {
     getSingleFilm(criteria) {
         return this.FilmModel.findOne({
                 where: criteria,
-                raw: true,
-                nest: true
+                include: [{
+                    model: this.CommentModel,
+                    as: 'Comments',
+                    attributes: ['id', 'comment', 'createdAt']
+                }],
+                //raw: true,
+                //nest: true
             },
         );
     }
+
     getAllFilm(criteria) {
         return this.FilmModel.findAll({
                 where: criteria,
-                raw: true,
-                nest: true
+                include: [{
+                    model: this.CommentModel,
+                    as: 'Comments',
+                    attributes: ['id', 'comment', 'createdAt']
+                }],
+                // raw: true,
+                // nest: true
             },
         );
     }
+
     createFilmComment(reqBody) {
         return this.CommentModel.create(reqBody);
+    }
+
+    getAllComments(criteria, filmCriteria = null) {
+        return this.CommentModel.findAll({
+            where: criteria,
+            include: [{
+                where: filmCriteria,
+                model: this.FilmModel,
+                as: 'filmId',
+                attributes: ['id', 'name']
+            }],
+        });
     }
 
 }

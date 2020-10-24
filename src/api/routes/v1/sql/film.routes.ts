@@ -2,9 +2,10 @@ import * as express from 'express';
 import validate from 'express-validation';
 import filmController from '../../../controllers/sql/film.controller';
 import authValidation from '../../../validations/validation'
+import authVerify from '../../../middlewares/authVerify'
 
 const router = express.Router();
-const { createFilm, createComment} = authValidation;
+const {createFilm, createComment} = authValidation;
 /**
  * @api {post} /api/v1/film/create Create Film
  * @apiDescription Create Film
@@ -108,7 +109,7 @@ router.route('/create').post(validate(createFilm), filmController.createFilm);
 }
  */
 
-router.route('/list').get( filmController.listFilm);
+router.route('/list').get(filmController.listFilm);
 
 /**
  * @api {get} /api/v1/film/film-details/{{uuid}} Film Details
@@ -156,7 +157,7 @@ router.route('/list').get( filmController.listFilm);
 }
  */
 
-router.route('/film-details/:uuid').get( filmController.getSingleFilm);
+router.route('/film-details/:uuid').get(filmController.getSingleFilm);
 
 /**
  * @api {get} /api/v1/film/film-comment create film comment
@@ -204,8 +205,7 @@ router.route('/film-details/:uuid').get( filmController.getSingleFilm);
 }
  */
 
-router.route('/comment').post( validate(createComment),filmController.createComment);
-
+router.route('/comment').post(authVerify, validate(createComment), filmController.createComment);
 
 
 export default router;
