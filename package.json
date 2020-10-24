@@ -1,0 +1,140 @@
+{
+  "name": "film-demo",
+  "version": "1.0.0",
+  "description": "film-demo",
+  "author": "Mohammad Sayeed",
+  "main": "src/index.js",
+  "private": true,
+  "engines": {
+    "node": ">=8.12.0",
+    "yarn": "*"
+  },
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "copy-assets": "ts-node tools/copyAssets",
+    "build": "npm-run-all clean tsc copy-assets",
+    "tsc": "tsc",
+    "dev:start": "npm-run-all build start",
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
+    "start": "node ./dist/index.js",
+    "prod": "tsc && node ./dist/index.js",
+    "test": "mocha --timeout 10000 -r ts-node/register ./test/*.test.ts",
+    "dbmigrate": "cd sequelize-migrations  && ../node_modules/.bin/sequelize db:seed:all && cd ..",
+    "lint": "eslint . --ext .ts,.tsx",
+    "docs": "apidoc -i src -o docs"
+  },
+  "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "async-redis": "^1.1.7",
+    "axios": "^0.19.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "compression": "^1.6.2",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.3",
+    "dotenv-safe": "^8.1.0",
+    "express": "^4.16.4",
+    "express-validation": "^1.0.2",
+    "helmet": "^3.5.0",
+    "http-status": "^1.0.1",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.1",
+    "lodash": "^4.17.11",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.2",
+    "node-fetch": "^2.6.0",
+    "pg": "^7.10.0",
+    "randomstring": "^1.1.5",
+    "sequelize": "^5.8.5",
+    "sequelize-transforms": "^2.0.0",
+    "uuid": "^3.3.2",
+    "winston": "^3.2.0",
+    "winston-daily-rotate-file": "^3.2.1",
+    "xmlbuilder2": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/bull": "^3.14.1",
+    "@types/chai": "^4.1.7",
+    "@types/chai-http": "^4.2.0",
+    "@types/dotenv-safe": "^5.0.3",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/lodash": "^4.14.126",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^12.7.5",
+    "@types/randomstring": "^1.1.6",
+    "@types/shelljs": "^0.8.5",
+    "@typescript-eslint/eslint-plugin": "^2.2.0",
+    "@typescript-eslint/parser": "^2.2.0",
+    "apidoc": "^0.17.7",
+    "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "express-session": "1.16.2",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.0",
+    "npm-run-all": "^4.1.5",
+    "nyc": "^14.1.1",
+    "rimraf": "^3.0.0",
+    "sequelize-cli": "^5.4.0",
+    "shelljs": "^0.8.3",
+    "ts-node": "^8.1.0",
+    "ts-node-dev": "^1.0.0-pre.39",
+    "typescript": "^3.4.5"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "brace-style": [
+        "error",
+        "stroustrup"
+      ],
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "no-unused-vars": [
+        "warn"
+      ],
+      "no-var": [
+        "off"
+      ],
+      "one-var": [
+        "off"
+      ],
+      "no-tabs": [
+        "off"
+      ],
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "no-console": [
+        "off"
+      ],
+      "import/no-unresolved": [
+        "off"
+      ],
+      "dot-notation": [
+        "off"
+      ],
+      "prefer-destructuring": [
+        "off"
+      ]
+    }
+  },
+  "license": "ISC"
+}
