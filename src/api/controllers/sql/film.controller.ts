@@ -49,8 +49,46 @@ export default class FilmController {
 
     static async listFilm(req: express.Request, res: express.Response) {
         try {
-            const reqBody = {...req.body};
+            const reqBody = {...req.query};
             const result = await FilmService.listFilm(reqBody);
+            if (result && result['error']) {
+                return customResponse.setResponse(
+                    res,
+                    false,
+                    httpStatus.BAD_REQUEST,
+                    result['error'],
+                    version.v1,
+                    result
+                );
+            }
+            return customResponse.setResponse(
+                res,
+                true,
+                httpStatus.OK,
+                miscMessage.SUCCESS,
+                version.v1,
+                result
+            );
+        }
+        catch (error) {
+            console.log(error);
+            return customResponse.setResponse(
+                res,
+                false,
+                httpStatus.INTERNAL_SERVER_ERROR,
+                miscMessage.FAILED,
+                version.v1,
+                error
+            );
+        }
+    }
+
+    static async getSingleFilm(req: express.Request, res: express.Response) {
+        try {
+            const reqBody = {
+                uuid: req.params.uuid
+            }
+            const result = await FilmService.getFilmDetails(reqBody);
             if (result && result['error']) {
                 return customResponse.setResponse(
                     res,
