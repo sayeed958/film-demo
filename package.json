@@ -1,7 +1,7 @@
 {
   "name": "film-demo",
   "version": "1.0.0",
-  "description": "film-demo",
+  "description": "film-demo rest apis",
   "author": "Mohammad Sayeed",
   "main": "src/index.js",
   "private": true,

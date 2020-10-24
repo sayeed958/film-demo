@@ -58,9 +58,24 @@ import upload from '../../../middlewares/fileUpload';
  {
     "status": true,
     "code": 200,
-    "message": "SUCCESS",
+    "message": "OK",
     "appVersion": "v1.0.0",
     "result": {
+        "uuid": "4878d0b2-0a26-4d96-b44d-08c36ebce996",
+        "id": 31,
+        "name": "G-V1",
+        "releaseDate": "2005-01-01T00:00:00.000Z",
+        "rating": 4,
+        "ticketPrice": 200,
+        "country": "India",
+        "description": "hollywood film",
+        "genre": [
+            "drama",
+            "action"
+        ],
+        "photo": "0ad3c5a4-cff5-49ef-8f62-d30edac103a2.png",
+        "updatedAt": "2020-10-24T20:17:17.256Z",
+        "createdAt": "2020-10-24T20:17:17.256Z"
     }
 }
  */
@@ -104,13 +119,73 @@ router.route('/create').post(upload.single('photo'), validate(createFilm), filmC
  }
  * @apiSuccessExample {json} Success-Response:
  {
-    "status": true,
-    "code": 200,
-    "message": "SUCCESS",
-    "appVersion": "v1.0.0",
-    "result": {
-    }
-}
+     "status": true,
+     "code": 200,
+     "message": "SUCCESS",
+     "appVersion": "v1.0.0",
+     "result": [
+         {
+             "id": 1,
+             "uuid": "cde5f1e2-4732-4355-b1b4-f2db0a740040",
+             "name": "DDLG",
+             "description": "Hindi film",
+             "releaseDate": "1985-01-01T00:00:00.000Z",
+             "rating": 5,
+             "ticketPrice": 200,
+             "country": "India",
+             "photo": null,
+             "genre": [
+                 "drama",
+                 "action"
+             ],
+             "createdAt": "2020-10-24T11:39:40.774Z",
+             "updatedAt": "2020-10-24T11:39:40.774Z",
+             "Comments": [
+                 {
+                     "id": 3,
+                     "comment": "awesome movie",
+                     "createdAt": "2020-10-24T11:39:40.774Z"
+                 }
+             ]
+         },
+         {
+             "id": 2,
+             "uuid": "a4caa2dd-ee52-40f6-8962-0cba79157b37",
+             "name": "Titanic",
+             "description": "Hollywood film",
+             "releaseDate": "1990-01-01T00:00:00.000Z",
+             "rating": 5,
+             "ticketPrice": 200,
+             "country": "USA",
+             "photo": null,
+             "genre": [
+                 "drama",
+                 "action"
+             ],
+             "createdAt": "2020-10-24T11:39:40.774Z",
+             "updatedAt": "2020-10-24T11:39:40.774Z",
+             "Comments": []
+         },
+         {
+             "id": 3,
+             "uuid": "c6b616e8-cace-4446-a5ad-a7b50b74b792",
+             "name": "Inception",
+             "description": "Hollywood film",
+             "releaseDate": "2000-01-01T00:00:00.000Z",
+             "rating": 5,
+             "ticketPrice": 200,
+             "country": "USA",
+             "photo": null,
+             "genre": [
+                 "drama",
+                 "action"
+             ],
+             "createdAt": "2020-10-24T11:39:40.774Z",
+             "updatedAt": "2020-10-24T11:39:40.774Z",
+             "Comments": []
+         }
+     ]
+ }
  */
 
 router.route('/list').get(filmController.listFilm);
@@ -157,6 +232,21 @@ router.route('/list').get(filmController.listFilm);
     "message": "SUCCESS",
     "appVersion": "v1.0.0",
     "result": {
+        "id": 2,
+        "uuid": "1691f4fc-37b6-4a45-afe5-fcdf9dfb4d51",
+        "name": "test",
+        "description": "test ",
+        "releaseDate": "2020-10-10T00:00:00.000Z",
+        "rating": 1,
+        "ticketPrice": 202,
+        "country": "IN",
+        "photo": "abcd.jpg",
+        "genre": [
+            "test"
+        ],
+        "createdAt": "2020-10-24T09:56:55.933Z",
+        "updatedAt": "2020-10-24T09:56:55.933Z",
+        "Comments": []
     }
 }
  */
@@ -172,7 +262,7 @@ router.route('/film-details/:uuid').get(filmController.getSingleFilm);
  * @apiPermission public
  *
  * @apiHeader {String} Content-Type application/json
- * @apiHeader {String} x-access-token
+ * @apiHeader {String} x-access-token JWT Token(required)
  *
  *
  * @apiSuccess (OK 200) {Number}     code         200=OK
@@ -200,13 +290,20 @@ router.route('/film-details/:uuid').get(filmController.getSingleFilm);
  }
  * @apiSuccessExample {json} Success-Response:
  {
-    "status": true,
-    "code": 200,
-    "message": "SUCCESS",
-    "appVersion": "v1.0.0",
-    "result": {
-    }
-}
+     "status": true,
+     "code": 200,
+     "message": "SUCCESS",
+     "appVersion": "v1.0.0",
+     "result": {
+         "uuid": "6f9135c4-cb73-4c8f-bec9-71479e8de604",
+         "id": 13,
+         "userId": 5,
+         "comment": "test",
+         "filmId": 1,
+         "updatedAt": "2020-10-24T20:18:55.735Z",
+         "createdAt": "2020-10-24T20:18:55.735Z"
+     }
+ }
  */
 
 router.route('/comment').post(authVerify, validate(createComment), filmController.createComment);

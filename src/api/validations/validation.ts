@@ -1,5 +1,9 @@
 import * as Joi from 'joi';
 
+/**
+ * @joi validation
+ *
+ * */
 export default {
     login: {
         body: Joi.object().keys({

@@ -7,11 +7,16 @@ import vars from '../../../config/vars';
 const {miscMessage} = constants;
 const {jwtSecret, jwtExpirationInterval} = vars;
 
+/**
+ * @class AuthService
+ * @description Allow to register, login and get JWT token
+ * */
 class AuthService {
     /**
      * @param reqBody
      * @return user
-     *
+     * @method register
+     * @param reqBody
      * */
     async register(reqBody) {
         const methodName = '[register]';
@@ -37,6 +42,8 @@ class AuthService {
     }
 
     /**
+     * @method login
+     * @name login
      * @param reqBody
      * @return token
      * */

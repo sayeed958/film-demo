@@ -44,13 +44,24 @@ const {login, register} = authValidation;
  }
  * @apiSuccessExample {json} Success-Response:
  {
-    "status": true,
-    "code": 200,
-    "message": "SUCCESSFULLY_LOGIN",
-    "appVersion": "v1.0.0",
-    "result": {
-    }
-}
+     "status": true,
+     "code": 200,
+     "message": "OK",
+     "appVersion": "v1.0.0",
+     "result": {
+         "account": {
+             "id": 6,
+             "uuid": "fbb3f55a-a7d9-4a0f-b233-e68d53044bf9",
+             "firstName": "test",
+             "lastName": "last name",
+             "email": "tes11qt1@test.com",
+             "phoneNo": null,
+             "createdAt": "2020-10-24T09:15:20.758Z",
+             "updatedAt": "2020-10-24T09:15:20.758Z"
+         },
+         "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDM1Mzk4NDgsInVzZXJJZCI6ImZiYjNmNTVhLWE3ZDktNGEwZi1iMjMzLWU2OGQ1MzA0NGJmOSIsImlkIjo2LCJpYXQiOjE2MDM1MzYyNDh9.7NaA9oS5imsd_7lxdx6jnV8SgcRMuYDZcHy3LWQBp_0"
+     }
+ }
  */
 
 router.route('/login').post(validate(login), authController.login);
@@ -98,12 +109,20 @@ router.route('/login').post(validate(login), authController.login);
  }
  * @apiSuccessExample {json} Success-Response:
  {
-     "status": true,
-     "code": 200,
-     "message": "Success",
-     "appVersion": "v1.0.0",
-     "result": []
- }
+    "status": true,
+    "code": 200,
+    "message": "SUCCESS",
+    "appVersion": "v1.0.0",
+    "result": {
+        "uuid": "fbb3f55a-a7d9-4a0f-b233-e68d53044bf9",
+        "email": "tes11qt1@test.com",
+        "firstName": "test",
+        "lastName": "last name",
+        "updatedAt": "2020-10-24T09:15:20.758Z",
+        "createdAt": "2020-10-24T09:15:20.758Z",
+        "phoneNo": null
+    }
+}
  */
 
 router.route('/register').post(validate(register), authController.register);

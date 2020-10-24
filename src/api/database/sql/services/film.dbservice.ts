@@ -1,20 +1,31 @@
 import {Op} from 'sequelize';
 import pgdb from '../../../../config/sequelize';
 import Base from './base.dbservice';
-import constants from '../../../../config/constants';
 
-
-const {miscMessage} = constants;
+/**
+ * @class FilmDbservice
+ * @description Allow to create films get all films, singles films and its associated comments
+ *
+ * */
 
 class FilmDbservice extends Base {
     FilmModel = pgdb['Films'];
     CommentModel = pgdb['Comments'];
 
-
+    /**
+     * @method createFilm
+     * @name createFilm
+     * @param data
+     * */
     createFilm(data) {
         return this.FilmModel.create(data);
     }
 
+    /**
+     * @method getSingleFilm
+     * @param criteria
+     * @name getSingleFilm
+     * */
     getSingleFilm(criteria) {
         return this.FilmModel.findOne({
                 where: criteria,
@@ -22,13 +33,17 @@ class FilmDbservice extends Base {
                     model: this.CommentModel,
                     as: 'Comments',
                     attributes: ['id', 'comment', 'createdAt']
+                    // If require we can include user who has commented
                 }],
-                //raw: true,
-                //nest: true
             },
         );
     }
 
+    /**
+     * @name getAllFilm
+     * @param criteria
+     * @method getAllFilm
+     * */
     getAllFilm(criteria) {
         return this.FilmModel.findAll({
                 where: criteria,
@@ -37,16 +52,25 @@ class FilmDbservice extends Base {
                     as: 'Comments',
                     attributes: ['id', 'comment', 'createdAt']
                 }],
-                // raw: true,
-                // nest: true
             },
         );
     }
 
+    /**
+     * @name createFilmComment
+     * @param reqBody
+     * @method createFilmComment
+     * */
     createFilmComment(reqBody) {
         return this.CommentModel.create(reqBody);
     }
 
+    /**
+     * @name getAllComments
+     * @param criteria
+     * @param filmCriteria
+     * @method getAllComments
+     * */
     getAllComments(criteria, filmCriteria = null) {
         return this.CommentModel.findAll({
             where: criteria,
