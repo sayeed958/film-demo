@@ -1,14 +1,9 @@
 import {Op} from 'sequelize';
 import pgdb from '../../../../config/sequelize';
 import Base from './base.dbservice';
-import constants from '../../../../config/constants';
-
-
-const {miscMessage} = constants;
 
 class StoreDbservice extends Base {
-    AuthModel = pgdb['User'];
-    FilmModel = pgdb['Film'];
+    AuthModel = pgdb['Users'];
 
 
     createUser(data) {

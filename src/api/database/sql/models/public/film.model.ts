@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Film = sequelize.define('Film', {
+    const Film = sequelize.define('Films', {
             uuid: {
                 type: DataTypes.UUID,
                 defaultValue: DataTypes.UUIDV4,
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         });
 
     Film.associate = (models) => {
-        Film.hasMany(models.Comment, {
+        Film.hasMany(models.Comments, {
             as: 'Comments',
             constraints: false,
             foreignKey: 'filmId',

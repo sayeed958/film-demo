@@ -7,8 +7,8 @@ import constants from '../../../../config/constants';
 const {miscMessage} = constants;
 
 class FilmDbservice extends Base {
-    FilmModel = pgdb['Film'];
-    CommentModel = pgdb['Comment'];
+    FilmModel = pgdb['Films'];
+    CommentModel = pgdb['Comments'];
 
 
     createFilm(data) {
