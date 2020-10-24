@@ -78,41 +78,4 @@ export default class AuthController {
             );
         }
     }
-
-    // static async changePassword(req: express.Request, res: express.Response) {
-    // 	try {
-    // 		const reqBody = { ...req.body };
-    // 		const username = req['user']['custom:userId'];
-    // 		const result = await adminService.changePassword(username, reqBody);
-    // 		if (result && result['error']) {
-    // 			return customResponse.setResponse(
-    // 				res,
-    // 				false,
-    // 				httpStatus.BAD_REQUEST,
-    // 				result['error'],
-    // 				version.v1,
-    // 				result
-    // 			);
-    // 		}
-    // 		return customResponse.setResponse(
-    // 			res,
-    // 			true,
-    // 			httpStatus.OK,
-    // 			miscMessage.PASSWORD_CHANGED_SUCCESSFULLY,
-    // 			version.v1,
-    // 			result
-    // 		);
-    // 	}
-    // 	catch (error) {
-    // 		console.log(error);
-    // 		return customResponse.setResponse(
-    // 			res,
-    // 			false,
-    // 			httpStatus.INTERNAL_SERVER_ERROR,
-    // 			miscMessage.FAILED,
-    // 			version.v1,
-    // 			error
-    // 		);
-    // 	}
-    // }
 }

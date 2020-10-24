@@ -56,7 +56,7 @@ const {login, register} = authValidation;
 router.route('/login').post(validate(login), authController.login);
 
 /**
- * @api {put} /api/v1/auth/register Register
+ * @api {post} /api/v1/auth/register Register
  * @apiDescription Register
  * @apiVersion 1.0.0
  * @apiName Register
@@ -67,7 +67,10 @@ router.route('/login').post(validate(login), authController.login);
  * @apiHeader {String} Authorization JWT-TOKEN
  *
  * @apiParam  {String}             email            email (Required)
- * @apiParam  {String}             pass            password (Required)
+ * @apiParam  {String}             password          password (Required)
+ * @apiParam  {String}             firstName            firstName (Required)
+ * @apiParam  {String}             lastName            lastName (Required)
+ * @apiParam  {String}             phoneNo            phoneNo (Optional)
  *
  *
  * @apiSuccess (OK 200) {Number}     code         200=OK
