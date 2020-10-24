@@ -8,6 +8,7 @@ const {miscMessage} = constants;
 
 class FilmDbservice extends Base {
     FilmModel = pgdb['Film'];
+    CommentModel = pgdb['Comment'];
 
 
     createFilm(data) {
@@ -29,6 +30,9 @@ class FilmDbservice extends Base {
                 nest: true
             },
         );
+    }
+    createFilmComment(reqBody) {
+        return this.CommentModel.create(reqBody);
     }
 
 }

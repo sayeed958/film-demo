@@ -121,4 +121,44 @@ export default class FilmController {
         }
     }
 
+    static async createComment(req: express.Request, res: express.Response) {
+        try {
+            const reqBody = {
+                userId: 1,
+                comment: req.body.comment,
+                filmId: req.body.filmId
+            };
+            const result = await FilmService.createFilmComment(reqBody);
+            if (result && result['error']) {
+                return customResponse.setResponse(
+                    res,
+                    false,
+                    httpStatus.BAD_REQUEST,
+                    result['error'],
+                    version.v1,
+                    result
+                );
+            }
+            return customResponse.setResponse(
+                res,
+                true,
+                httpStatus.OK,
+                miscMessage.SUCCESS,
+                version.v1,
+                result
+            );
+        }
+        catch (error) {
+            console.log(error);
+            return customResponse.setResponse(
+                res,
+                false,
+                httpStatus.INTERNAL_SERVER_ERROR,
+                miscMessage.FAILED,
+                version.v1,
+                error
+            );
+        }
+    }
+
 }

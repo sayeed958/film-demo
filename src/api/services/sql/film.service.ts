@@ -36,6 +36,14 @@ class FilmService {
      * */
     getFilmDetails = (reqBody) => FilmDbService.getSingleFilm(reqBody);
 
+        /**
+         * @method getFilmDetails
+         * @param reqBody
+         * @return film
+         *
+         * */
+    createFilmComment = (reqBody) => FilmDbService.createFilmComment(reqBody);
+
 
 }
 

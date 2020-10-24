@@ -17,15 +17,20 @@ export default {
     },
     createFilm: {
         body: Joi.object().keys({
-            firstName: Joi.string().required(),
             name: Joi.string().required(),
             description: Joi.string().required(),
             releaseDate: Joi.date().required(),
             rating: Joi.number().min(1).max(5).required(),
             ticketPrice: Joi.number().required(),
-            country: Joi.number().required(),
+            country: Joi.string().required(),
             photo: Joi.string().required(),
             genre: Joi.array().required(),
+        })
+    },
+    createComment: {
+        body: Joi.object().keys({
+            comment: Joi.string().required(),
+            filmId: Joi.number().required(),
         })
     }
 };
